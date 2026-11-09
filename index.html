@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя стартовая страница</title>
+    <style>
+        :root {
+            --bg: #0f1115;
+            --surface: #181b21;
+            --surface-hover: #22262e;
+            --text: #e8eaed;
+            --text-muted: #9aa0a6;
+            --border: #2a2e35;
+            --accent: #8ab4f8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        /* Часы и дата */
+        .datetime {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+        }
+        .time {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--text);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+        }
+        .date {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Сетка групп */
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        .group {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px 20px;
+        }
+
+        .group-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 12px;
+        }
+
+        /* Плитка-кнопка */
+        .tile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 6px;
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+
+        .tile:hover {
+            background-color: var(--surface-hover);
+            border-color: var(--border);
+            transform: translateY(-3px);
+        }
+
+        .tile img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .tile span {
+            font-size: 0.7rem;
+            text-align: center;
+            line-height: 1.2;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .tile:hover span {
+            color: var(--text);
+        }
+
+        /* Адаптив */
+        @media (max-width: 600px) {
+            body { padding: 12px; }
+            .time { font-size: 2.5rem; }
+            .tiles { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 8px; }
+            .tile { padding: 10px 4px; }
+            .tile img { width: 28px; height: 28px; }
+            .tile span { font-size: 0.65rem; }
+            .group { padding: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Часы и дата -->
+    <div class="datetime">
+        <div class="time" id="clock">00:00:00</div>
+        <div class="date" id="date">—</div>
+    </div>
+
+    <!-- Дашборд -->
+    <div class="dashboard">
+
+        <!-- ИИ -->
+        <div class="group">
+            <div class="group-title">🤖 Искусственный интеллект</div>
+            <div class="tiles">
+                <a href="https://chat.qwen.ai/" target="_blank" class="tile" title="Qwen">
+                    <img src="https://www.google.com/s2/favicons?domain=chat.qwen.ai&sz=128" alt="Qwen">
+                    <span>Qwen</span>
+                </a>
+                <a href="https://www.perplexity.ai/" target="_blank" class="tile" title="Perplexity">
+                    <img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=128" alt="Perplexity">
+                    <span>Perplexity</span>
+                </a>
+                <a href="https://grok.com/" target="_blank" class="tile" title="Grok">
+                    <img src="https://www.google.com/s2/favicons?domain=grok.com&sz=128" alt="Grok">
+                    <span>Grok</span>
+                </a>
+                <a href="https://chat.deepseek.com/" target="_blank" class="tile" title="DeepSeek">
+                    <img src="https://www.google.com/s2/favicons?domain=chat.deepseek.com&sz=128" alt="DeepSeek">
+                    <span>DeepSeek</span>
+                </a>
+                <a href="https://chat.mistral.ai/" target="_blank" class="tile" title="Mistral">
+                    <img src="https://www.google.com/s2/favicons?domain=chat.mistral.ai&sz=128" alt="Mistral">
+                    <span>Mistral</span>
+                </a>
+                <a href="https://claude.ai/" target="_blank" class="tile" title="Claude">
+                    <img src="https://www.google.com/s2/favicons?domain=claude.ai&sz=128" alt="Claude">
+                    <span>Claude</span>
+                </a>
+                <a href="https://arena.ai/" target="_blank" class="tile" title="Arena AI">
+                    <img src="https://www.google.com/s2/favicons?domain=arena.ai&sz=128" alt="Arena AI">
+                    <span>Arena</span>
+                </a>
+                <a href="https://syntx.ai/ru/" target="_blank" class="tile" title="Syntx AI">
+                    <img src="https://www.google.com/s2/favicons?domain=syntx.ai&sz=128" alt="Syntx AI">
+                    <span>Syntx</span>
+                </a>
+                <a href="https://gemini.google.com/app" target="_blank" class="tile" title="Gemini">
+                    <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" alt="Gemini">
+                    <span>Gemini</span>
+                </a>
+                <!-- ✅ Добавлена Gemma -->
+                <a href="https://ai.google.dev/gemma" target="_blank" class="tile" title="Gemma">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/gemma.svg" alt="Gemma">
+                    <span>Gemma</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Соцсети и мессенджеры -->
+        <div class="group">
+            <div class="group-title">💬 Соцсети и мессенджеры</div>
+            <div class="tiles">
+                <a href="https://web.telegram.org/" target="_blank" class="tile" title="Telegram">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/telegram.svg" alt="Telegram">
+                    <span>Telegram</span>
+                </a>
+                <a href="https://vk.ru/" target="_blank" class="tile" title="ВКонтакте">
+                    <img src="https://www.google.com/s2/favicons?domain=vk.com&sz=128" alt="VK">
+                    <span>VK</span>
+                </a>
+                <a href="https://ok.ru/" target="_blank" class="tile" title="Одноклассники">
+                    <img src="https://www.google.com/s2/favicons?domain=ok.ru&sz=128" alt="OK">
+                    <span>OK</span>
+                </a>
+                <a href="https://web.max.ru/" target="_blank" class="tile" title="MAX">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/max.svg" alt="MAX">
+                    <span>MAX</span>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="tile" title="Instagram">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/instagram.svg" alt="Instagram">
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.tiktok.com/" target="_blank" class="tile" title="TikTok">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/tiktok.svg" alt="TikTok">
+                    <span>TikTok</span>
+                </a>
+                <a href="https://dtf.ru/" target="_blank" class="tile" title="DTF">
+                    <img src="https://www.google.com/s2/favicons?domain=dtf.ru&sz=128" alt="DTF">
+                    <span>DTF</span>
+                </a>
+                <a href="https://ru.pinterest.com/" target="_blank" class="tile" title="Pinterest">
+                    <img src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=128" alt="Pinterest">
+                    <span>Pinterest</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Видео, музыка, кино -->
+        <div class="group">
+            <div class="group-title">🎬 Видео, музыка и кино</div>
+            <div class="tiles">
+                <!-- ✅ Добавлен YouTube (Google Video) -->
+                <a href="https://www.youtube.com/" target="_blank" class="tile" title="YouTube">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/youtube.svg" alt="YouTube">
+                    <span>YouTube</span>
+                </a>
+                <a href="https://vkvideo.ru/" target="_blank" class="tile" title="VK Видео">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/vk-video.svg" alt="VK Видео">
+                    <span>VK Видео</span>
+                </a>
+                <a href="https://live.vkvideo.ru/" target="_blank" class="tile" title="VK Live">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/vk-video.svg" alt="VK Live">
+                    <span>VK Live</span>
+                </a>
+                <a href="https://www.twitch.tv/" target="_blank" class="tile" title="Twitch">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/twitch.svg" alt="Twitch">
+                    <span>Twitch</span>
+                </a>
+                <a href="https://www.kinopoisk.ru/" target="_blank" class="tile" title="Кинопоиск">
+                    <img src="https://www.google.com/s2/favicons?domain=kinopoisk.ru&sz=128" alt="Кинопоиск">
+                    <span>Кинопоиск</span>
+                </a>
+                <a href="https://www.radiorecord.ru/" target="_blank" class="tile" title="VK Records (Radio Record)">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/vk-records.svg" alt="VK Records">
+                    <span>VK Records</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Покупки -->
+        <div class="group">
+            <div class="group-title">🛒 Покупки и маркетплейсы</div>
+            <div class="tiles">
+                <a href="https://www.dns-shop.ru/" target="_blank" class="tile" title="DNS">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/dns.svg" alt="DNS">
+                    <span>DNS</span>
+                </a>
+                <a href="https://www.ozon.ru/" target="_blank" class="tile" title="Ozon">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/ozon.svg" alt="Ozon">
+                    <span>Ozon</span>
+                </a>
+                <a href="https://www.mvideo.ru/" target="_blank" class="tile" title="М.Видео">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/mvideo.svg" alt="М.Видео">
+                    <span>М.Видео</span>
+                </a>
+                <a href="https://www.wildberries.ru/" target="_blank" class="tile" title="Wildberries">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/wildberries.svg" alt="Wildberries">
+                    <span>Wildberries</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Разработка и технологии -->
+        <div class="group">
+            <div class="group-title">💻 Разработка и технологии</div>
+            <div class="tiles">
+                <a href="https://github.com/" target="_blank" class="tile" title="GitHub">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/github.svg" alt="GitHub">
+                    <span>GitHub</span>
+                </a>
+                <a href="https://4pda.to/" target="_blank" class="tile" title="4PDA">
+                    <img src="https://www.google.com/s2/favicons?domain=4pda.to&sz=128" alt="4PDA">
+                    <span>4PDA</span>
+                </a>
+                <a href="https://trace-logos.ru/" target="_blank" class="tile" title="Trace Logos">
+                    <img src="https://www.google.com/s2/favicons?domain=trace-logos.ru&sz=128" alt="Trace Logos">
+                    <span>Trace Logos</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Безопасность -->
+        <div class="group">
+            <div class="group-title">🛡️ Безопасность</div>
+            <div class="tiles">
+                <a href="https://www.virustotal.com/gui/home/upload" target="_blank" class="tile" title="VirusTotal">
+                    <img src="https://cdn.simpleicons.org/virustotal/white" alt="VirusTotal">
+                    <span>VirusTotal</span>
+                </a>
+                <a href="https://opentip.kaspersky.com/ru" target="_blank" class="tile" title="Kaspersky OpenTip">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/kaspersky.svg" alt="Kaspersky">
+                    <span>Kaspersky</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Инструменты -->
+        <div class="group">
+            <div class="group-title">⚙️ Инструменты и сервисы</div>
+            <div class="tiles">
+                <a href="https://www.google.com/" target="_blank" class="tile" title="Google">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/google.svg" alt="Google">
+                    <span>Google</span>
+                </a>
+                <a href="https://ya.ru/" target="_blank" class="tile" title="Яндекс">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/yandex.svg" alt="Яндекс">
+                    <span>Яндекс</span>
+                </a>
+                <a href="https://mail.proton.me/" target="_blank" class="tile" title="Proton Mail">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/proton-mail.svg" alt="Proton Mail">
+                    <span>Proton Mail</span>
+                </a>
+                <a href="https://yoomoney.ru/" target="_blank" class="tile" title="ЮMoney">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/yoomoney.svg" alt="ЮMoney">
+                    <span>ЮMoney</span>
+                </a>
+                <a href="https://yandex.ru/internet" target="_blank" class="tile" title="Яндекс Интернетометр">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/yandex.svg" alt="Интернетометр">
+                    <span>Интернетометр</span>
+                </a>
+                <a href="https://disk.yandex.ru/" target="_blank" class="tile" title="Яндекс Диск">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/yandex-disk.svg" alt="Яндекс Диск">
+                    <span>Яндекс Диск</span>
+                </a>
+                <a href="https://convertio.co/ru/" target="_blank" class="tile" title="Convertio">
+                    <img src="https://cdn.simpleicons.org/convertio/white" alt="Convertio">
+                    <span>Convertio</span>
+                </a>
+                <!-- ✅ Добавлены Госуслуги -->
+                <a href="https://www.gosuslugi.ru/" target="_blank" class="tile" title="Госуслуги">
+                    <img src="https://trace-logos.ru/assets/logos/svgs/gosuslugi.svg" alt="Госуслуги">
+                    <span>Госуслуги</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Игры -->
+        <div class="group">
+            <div class="group-title">🎮 Игры</div>
+            <div class="tiles">
+                <a href="https://tanki.su/" target="_blank" class="tile" title="Танки">
+                    <img src="https://www.google.com/s2/favicons?domain=tanki.su&sz=128" alt="Танки">
+                    <span>Танки</span>
+                </a>
+                <a href="https://docs.wotstat.info/" target="_blank" class="tile" title="WoT Stat">
+                    <img src="https://docs.wotstat.info/logo-dark.svg" alt="WoT Stat">
+                    <span>WoT Stat</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Часы и дата
+        function updateDateTime() {
+            const now = new Date();
+
+            // Время
+            const h = String(now.getHours()).padStart(2, '0');
+            const m = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+
+            // Дата
+            const days = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+            const months = [
+                'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+                'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+            ];
+            const dayName = days[now.getDay()];
+            const day = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear();
+
+            document.getElementById('date').textContent = `${dayName}, ${day} ${month} ${year} г.`;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+
+</body>
+</html>
