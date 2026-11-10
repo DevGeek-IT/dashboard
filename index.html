@@ -106,7 +106,7 @@
             transform: translateY(-3px);
         }
 
-        .tile img {
+        .tile img, .tile svg {
             width: 32px;
             height: 32px;
             object-fit: contain;
@@ -136,7 +136,7 @@
             .time { font-size: 2.5rem; }
             .tiles { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 8px; }
             .tile { padding: 10px 4px; }
-            .tile img { width: 28px; height: 28px; }
+            .tile img, .tile svg { width: 28px; height: 28px; }
             .tile span { font-size: 0.65rem; }
             .group { padding: 14px; }
         }
@@ -193,7 +193,6 @@
                     <img src="https://www.google.com/s2/favicons?domain=gemini.google.com&sz=128" alt="Gemini">
                     <span>Gemini</span>
                 </a>
-                <!-- ✅ Добавлена Gemma -->
                 <a href="https://ai.google.dev/gemma" target="_blank" class="tile" title="Gemma">
                     <img src="https://trace-logos.ru/assets/logos/svgs/gemma.svg" alt="Gemma">
                     <span>Gemma</span>
@@ -244,7 +243,6 @@
         <div class="group">
             <div class="group-title">🎬 Видео, музыка и кино</div>
             <div class="tiles">
-                <!-- ✅ Добавлен YouTube (Google Video) -->
                 <a href="https://www.youtube.com/" target="_blank" class="tile" title="YouTube">
                     <img src="https://trace-logos.ru/assets/logos/svgs/youtube.svg" alt="YouTube">
                     <span>YouTube</span>
@@ -361,10 +359,18 @@
                     <img src="https://cdn.simpleicons.org/convertio/white" alt="Convertio">
                     <span>Convertio</span>
                 </a>
-                <!-- ✅ Добавлены Госуслуги -->
                 <a href="https://www.gosuslugi.ru/" target="_blank" class="tile" title="Госуслуги">
                     <img src="https://trace-logos.ru/assets/logos/svgs/gosuslugi.svg" alt="Госуслуги">
                     <span>Госуслуги</span>
+                </a>
+                <!-- ✅ Добавлен Proxy302 со встроенным кастомным SVG -->
+                <a href="https://proxy302.com/" target="_blank" class="tile" title="Proxy302">
+                    <svg viewBox="0 0 180 180" width="32" height="32" aria-hidden="true">
+                        <rect width="180" height="180" rx="40" fill="#2563eb"/>
+                        <path d="M50 90 L90 50 L130 90 L110 110 L90 90 L70 110 Z" fill="#ffffff" opacity="0.9"/>
+                        <circle cx="90" cy="115" r="15" fill="#ffffff"/>
+                    </svg>
+                    <span>Proxy302</span>
                 </a>
             </div>
         </div>
